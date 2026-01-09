@@ -22,5 +22,10 @@ export type UUIDV4=`${String}-${String}-4${String}-${"8" | "9" | "A" | "B"}${Str
 
 
 type TrustedEmailProviders= "gmail.com" | "yahoo.com" | "yahoo.in" | "outlook.com" | "live.com" | "hotmail.com" | "protonmail.com" | "icloud.com" | "aol.com";
-
 export type TrustableEmail= `${String}@${TrustedEmailProviders}`;
+
+export type Exact<T, U extends T = T> =
+  T & { [K in Exclude<keyof U, keyof T>]: never };
+declare const brand: unique symbol;
+
+export type Brand<T, Name> = T & { [brand]: Name };
