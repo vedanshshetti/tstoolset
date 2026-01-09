@@ -1,0 +1,33 @@
+{
+  "name": "@insanedev2478/tstoolset",
+  "version": "1.0.0",
+  "description": "Collection of handy TypeScript types, ranging from primitives like numbers all the way to UUIDs and Email Addresses. ",
+  "license": "MIT",
+  "type": "module",
+  "main": "",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc --emitDeclarationOnly --declaration --outDir dist ./src/index.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "typescript",
+    "types",
+    "utility-types",
+    "typescript-types",
+    "typescript-utilities",
+    "typescript-toolkit",
+    "ts-toolkit",
+    "type-level",
+    "zero-runtime",
+    "tstoolset"
+  ]
+}
