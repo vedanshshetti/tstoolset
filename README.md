@@ -1,5 +1,5 @@
 # 🧰 **tstoolset**  
-Zero‑runtime TypeScript utility types for cleaner, safer, more expressive code.
+**Open-source**, **Zero‑runtime** TypeScript **utility types** for cleaner, safer, more expressive code.
 
 ---
 
