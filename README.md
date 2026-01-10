@@ -96,8 +96,8 @@ const fn = convert<(...args: any[]) => void>(() => {});
 ---
 
 ## 🤝 Contributing
-
-Issues, ideas, and PRs are welcome — this project is growing fast and feedback helps shape the toolkit.
+I am still a 6th grader, so new releases will only be on weekends, but <br>
+issues, ideas, and PRs are welcome — this project is growing fast and feedback helps shape the toolkit.
 
 ---
 
