@@ -45,3 +45,10 @@ export function convert<T extends ConvertableTypes>(x: unknown): T {
     // Otherwise, just assert
     return x as T;
 }
+
+export type Merge<A, B> = {
+  [K in keyof A | keyof B]:
+    K extends keyof B ? B[K] :
+    K extends keyof A ? A[K] :
+    never;
+};
