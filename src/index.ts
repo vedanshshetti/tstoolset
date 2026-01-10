@@ -52,3 +52,8 @@ export type Merge<A, B> = {
     K extends keyof A ? A[K] :
     never;
 };
+
+export type CamelCase<S extends string> =
+    S extends `${infer Head}_${infer Tail}`
+        ? `${Head}${CamelCase<Capitalize<Tail>>}`
+        : S;
