@@ -23,6 +23,8 @@ npm install @insanedev2478/tstoolset
 - Exact object enforcement with `Exact<T>`
 - Safe assertion helper: `convert<T>(x)`
 - Zero runtime cost — pure TypeScript
+- Object schema merger with `Merge<A, B>`
+- snake_case to camelCase conversion with `CamelCase<string>`
 
 ---
 
