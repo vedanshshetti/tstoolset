@@ -49,9 +49,8 @@ const x: Exact<User> = { id: "123", a: 1 } // ❌ extra key
 ```ts
 import type { CamelCase } from "@insanedev2478/tstoolset";
 
-type User = { id: string };
-const u: Exact<User> = { id: "123" };      // ok
-const x: Exact<User> = { id: "123", a: 1 } // ❌ extra key
+const str: string="snake_case";
+const camelStr: CamelCase<typeof str>=str;
 ```
 
 ### **Nominal typing**
