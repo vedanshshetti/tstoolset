@@ -39,7 +39,7 @@ export function convert<T extends ConvertableTypes>(x: unknown): T {
 
     // If T is a function, ensure x is a function
     if (typeof x === "function") {
-        return x as T;
+        return x as Func<any> as T;
     }
 
     // Otherwise, just assert
