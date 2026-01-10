@@ -16,7 +16,8 @@
   ],
   "scripts": {
     "build": "tsc --emitDeclarationOnly --declaration --outDir dist ./src/index.ts",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "github:commitAndPush": "git add . && git commit -m \"Added new script to package.json\" && git push"
   },
   "keywords": [
     "typescript",
@@ -29,5 +30,9 @@
     "type-level",
     "zero-runtime",
     "tstoolset"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vedanshshetti/tstoolset.git"
+}
 }
