@@ -29,3 +29,19 @@ export type Exact<T, U extends T = T> =
 declare const brand: unique symbol;
 
 export type Brand<T, Name> = T & { [brand]: Name };
+
+type ConvertableTypes = Primitive | Obj | Arr | Func | TrustableEmail | UUIDV4;
+
+export function convert<T extends ConvertableTypes>(x: unknown): T {
+    if (x === null || x === undefined) {
+        throw new Error("Cannot convert null or undefined to the desired type");
+    }
+
+    // If T is a function, ensure x is a function
+    if (typeof x === "function") {
+        return x as T;
+    }
+
+    // Otherwise, just assert
+    return x as T;
+}
