@@ -4,7 +4,6 @@
   "description": "Collection of handy TypeScript types, ranging from primitives like numbers all the way to UUIDs and Email Addresses. ",
   "license": "MIT",
   "type": "module",
-  "main": "",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
@@ -30,8 +29,9 @@
     "zero-runtime",
     "tstoolset"
   ],
+  "homepage": "https://github.com/vedanshshetti/tstoolset",
   "repository": {
     "type": "git",
     "url": "https://github.com/vedanshshetti/tstoolset.git"
-}
+  }
 }
