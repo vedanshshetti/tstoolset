@@ -1,8 +1,8 @@
-# 🧰 **tstoolset**  
+# 🧰 **tstoolset**
+
 **Open-source**, **Zero‑runtime** TypeScript **utility types** for cleaner, safer, more expressive code. <br>
 ![npm version](https://img.shields.io/npm/v/@insanedev2478/tstoolset)
 ![license](https://img.shields.io/github/license/vedanshshetti/tstoolset)
-
 
 ---
 
@@ -31,6 +31,7 @@ npm install @insanedev2478/tstoolset
 ## 📦 Usage
 
 ### **Primitive & container helpers**
+
 ```ts
 import type { String, Obj, Arr } from "@insanedev2478/tstoolset";
 
@@ -39,23 +40,32 @@ type Tags = Arr<String>;
 ```
 
 ### **Exact object enforcement**
+
 ```ts
 import type { Exact } from "@insanedev2478/tstoolset";
 
 type User = { id: string };
-const u: Exact<User> = { id: "123" };      // ok
-const x: Exact<User> = { id: "123", a: 1 } // ❌ extra key
+const u: Exact<User> = { id: "123" }; // ok
+const x: Exact<User> = { id: "123", a: 1 }; // ❌ extra key
 ```
 
-### **snake_case to camelCase**
+### snake_case to camelCase 🔁
+
 ```ts
 import type { CamelCase } from "@insanedev2478/tstoolset";
 
-const str: string="snake_case";
-const camelStr: CamelCase<typeof str>=str;
+// Basic examples:
+type A = CamelCase<"snake_case">; // 'snakeCase'
+type B = CamelCase<"multi_part_name">; // 'multiPartName'
+type C = CamelCase<"alreadyCamel">; // 'alreadyCamel'
+
+// Using a literal:
+const s: "hello_world" = "hello_world";
+type S = CamelCase<typeof s>; // 'helloWorld'
 ```
 
 ### **Nominal typing**
+
 ```ts
 import type { Brand } from "@insanedev2478/tstoolset";
 
@@ -65,20 +75,21 @@ const id: UserId = "abc" as UserId;
 ```
 
 ### **Merge**
+
 ```ts
 import type { Merge } from "@insanedev2478/tstoolset";
 type A = { id: string; name: string };
 type B = { id: number; admin: boolean };
 
 const merged: Merge<A, B> = {
-  id: 123,        // overridden by B
+  id: 123, // overridden by B
   name: "John",
-  admin: true
+  admin: true,
 };
-
 ```
 
 ### **UUID & Email template types**
+
 ```ts
 import type { UUIDV4, TrustableEmail } from "@insanedev2478/tstoolset";
 
@@ -87,6 +98,7 @@ const email: TrustableEmail = "user@gmail.com";
 ```
 
 ### **Safe converter**
+
 ```ts
 import { convert } from "@insanedev2478/tstoolset";
 
@@ -106,6 +118,7 @@ const fn = convert<(...args: any[]) => void>(() => {});
 ---
 
 ## 🤝 Contributing
+
 I am still a 6th grader, so new releases will only be on weekends, but <br>
 issues, ideas, and PRs are welcome — this project is growing fast and feedback helps shape the toolkit.
 

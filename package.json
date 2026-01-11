@@ -16,8 +16,7 @@
   ],
   "scripts": {
     "build": "tsc --emitDeclarationOnly --declaration --outDir dist ./src/index.ts",
-    "prepublishOnly": "npm run build",
-    "github:commit": "git add . && git commit -m \"Added new script to package.json\""
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "typescript",

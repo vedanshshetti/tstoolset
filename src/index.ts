@@ -32,6 +32,24 @@ export type Brand<T, Name> = T & { [brand]: Name };
 
 type ConvertableTypes = Primitive | Obj | Arr | Func | TrustableEmail | UUIDV4;
 
+
+export type Merge<A, B> = {
+  [K in keyof A | keyof B]:
+    K extends keyof B ? B[K] :
+    K extends keyof A ? A[K] :
+    never;
+};
+
+export type CamelCase<S extends string> =
+    S extends `${infer Head}_${infer Tail}`
+        ? `${Head}${CamelCase<Capitalize<Tail>>}`
+        : S extends `${infer Head}-${infer Tail}`
+        ? `${Head}${CamelCase<Capitalize<Tail>>}`
+        : S extends `${infer Head} ${infer Tail}`
+        ? `${Head}${CamelCase<Capitalize<Tail>>}`
+        : S;
+
+        
 export function convert<T extends ConvertableTypes>(x: unknown): T {
     if (x === null || x === undefined) {
         throw new Error("Cannot convert null or undefined to the desired type");
@@ -46,14 +64,15 @@ export function convert<T extends ConvertableTypes>(x: unknown): T {
     return x as T;
 }
 
-export type Merge<A, B> = {
-  [K in keyof A | keyof B]:
-    K extends keyof B ? B[K] :
-    K extends keyof A ? A[K] :
-    never;
-};
 
-export type CamelCase<S extends string> =
-    S extends `${infer Head}_${infer Tail}`
-        ? `${Head}${CamelCase<Capitalize<Tail>>}`
-        : S;
+export function convertToCamelCase<S extends string>(str: S): CamelCase<S> {
+    const parts = (str as string).split(/[_\-\s]+/).filter(Boolean);
+    if (parts.length === 0) return '' as CamelCase<S>;
+    let result = parts[0];
+    for (let i = 1; i < parts.length; i++) {
+        const p = parts[i];
+        if (p.length === 0) continue;
+        result += p.charAt(0).toUpperCase() + p.slice(1);
+    }
+    return result as CamelCase<S>;
+}
