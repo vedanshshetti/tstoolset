@@ -1,5 +1,5 @@
 {
-  "name": "@insanedev2478/tstoolset",
+  "name": "@insanelabs/tstoolset",
   "version": "1.4.0",
   "description": "Collection of handy TypeScript types, ranging from primitives like numbers all the way to UUIDs and Email Addresses. ",
   "license": "MIT",

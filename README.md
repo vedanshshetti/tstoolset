@@ -9,7 +9,7 @@
 ## 🚀 Installation
 
 ```sh
-npm install @insanedev2478/tstoolset
+npm install @insanelabs/tstoolset
 ```
 
 ---
@@ -53,15 +53,23 @@ const x: Exact<User> = { id: "123", a: 1 }; // ❌ extra key
 
 ```ts
 import type { CamelCase } from "@insanedev2478/tstoolset";
+import { convertToCamelCase } from "@insanedev2478/tstoolset";
 
-// Basic examples:
+// Type-level examples:
 type A = CamelCase<"snake_case">; // 'snakeCase'
 type B = CamelCase<"multi_part_name">; // 'multiPartName'
 type C = CamelCase<"alreadyCamel">; // 'alreadyCamel'
 
-// Using a literal:
-const s: "hello_world" = "hello_world";
+// Using a literal (type-level):
+const s = "hello_world" as const;
 type S = CamelCase<typeof s>; // 'helloWorld'
+
+// Runtime helper `convertToCamelCase` preserves the typed relationship when used with literal types
+const r = convertToCamelCase(s); // 'helloWorld' (type: CamelCase<typeof s>)
+
+// It also handles dashes and spaces, and collapses multiple separators:
+const r2 = convertToCamelCase("multi-part name" as const); // 'multiPartName'
+const r3 = convertToCamelCase("alreadyCamel" as const); // 'alreadyCamel'
 ```
 
 ### **Nominal typing**
@@ -111,7 +119,7 @@ const fn = convert<(...args: any[]) => void>(() => {});
 
 - Deep utilities (`DeepPartial`, `DeepReadonly`, `DeepRequired`)
 - JSON‑safe types (`JsonValue`, `JsonObject`)
-- String manipulation types (`CamelCase`, `KebabCase`)
+- String manipulation types (`KebabCase`, `snake-case`)
 - Schema‑style helpers
 - More branded primitives
 
